@@ -50,6 +50,10 @@ provider "google" {
 5. [terraform apply](https://www.terraform.io/docs/cli/commands/apply.html "terraform apply")
 6. [terraform destroy](https://www.terraform.io/docs/cli/commands/destroy.html "terraform destroy")
 
+#### DOC DE REFERÊNCIA GCP
+
+1. [Disk Types](https://cloud.google.com/compute/docs/disks#disk-types "Disk Types")
+
 ---
 
 #### COMANDOS DE REFERENCIA
@@ -101,13 +105,15 @@ Caso houver qualquer erro, leia atentamente o terminal.
 
 2. Crie uma rede
 
-3. Crie um disco de 30GB
+3. Crie um disco de persistente de 30GB, do tipo balanceado
 
 4. Crie uma regra de firewall liberando, ICMP e a porta 22 para 0.0.0.0/0
 
 5. Crie uma máquina virtual, na rede criada no passo 2.
 
-6. Tente realizar um acesso SSH na máquina via console da GCP.
+6. Teste o acesso SSH na máquina via console da GCP.
+
+7. Confirme que o disco foi montado com sucesso 
 
 `
 Obs: lembre-se de ao final destruir sua infraestrutura  por questões de billing e manutenção sadia da sua free tier.
