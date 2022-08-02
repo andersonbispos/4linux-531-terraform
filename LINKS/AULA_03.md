@@ -113,7 +113,7 @@ Caso houver qualquer erro, leia atentamente o terminal.
 
 6. Teste o acesso SSH na máquina via console da GCP.
 
-7. Confirme que o disco foi montado com sucesso 
+7. Confirme que o disco foi montado com sucesso com o comando lsscsi
 
 `
 Obs: lembre-se de ao final destruir sua infraestrutura  por questões de billing e manutenção sadia da sua free tier.
