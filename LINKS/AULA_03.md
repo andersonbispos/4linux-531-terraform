@@ -188,9 +188,9 @@ Caso haja qualquer erro, leia atentamente o terminal.
 
 3. Crie o código para uma regra de firewall para a vpc-lab02, liberando a porta 22 e o protocolo icmp, novamente não aplique, execute apenas o validate e verifique o plano de execução.
 
-4. Crie o código de uma nova instância, na rede vpc-lab02, com um ip público efêmero.
+4. Crie o código de uma nova instância, que use a rede vpc-lab02, com um ip público efêmero.
 
-5. Crie gradativamente a sua infra estrutura utilizando o parâmetro "-target"
+5. Crie gradativamente a sua infra estrutura utilizando o parâmetro "-target". Valide os objetos guardados no estado do terraform após cada execução. (Diga de ordem de execução: rede, firewall, instancia)
 
 6. Valide na console da GCP a criação dos itens até aqui.
 
