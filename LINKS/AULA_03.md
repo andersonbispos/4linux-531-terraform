@@ -99,9 +99,9 @@ Para cada laboratório, crie um novo diretório.
 
 Para evitar erros realize cada item do exercício por partes, ou seja, crie e aplique cada parte da sua infraestrutura separadamente, utilize um arquivo .tf separado para cada recurso.
 
-Aproveite parar fazer seus testes, todo novo atributo que for criado, faça sempre o `terraform plan` e `terraform validate` e o `terraform apply` para verificar a saída no output.
+Aproveite parar fazer seus testes, todo novo atributo que for criado, faça sempre o `terraform validate`, `terraform plan` para verificar a saída no output e só depois o `terraform apply` 
 
-Caso houver qualquer erro, leia atentamente o terminal.
+Caso haja qualquer erro, leia atentamente o terminal.
 
 1. Inicialize o Provider
 
