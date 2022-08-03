@@ -89,13 +89,15 @@ terraform destroy
 Da mesma forma que fizemos com o `apply`, aqui também podemos passar o subcomando `-auto-approve` para não pedir confirmação.
 
 ---
-#### Pratice Labs: 
+#### Practice Labs - Lab 01: 
 
-Criando configurações e modificando sua Infraestrutura
+Criando configurações iniciais
 
 Instruções:
 
-Para simplificar realize cada item do exercício por partes, utilize um arquivo .tf separado para cada recurso. Utilize o terraform plan para realizar os testes de seu script, logo após a criação de cada arquivo.
+Para cada laboratório, crie um novo diretório.
+
+Para evitar erros realize cada item do exercício por partes, ou seja, crie e aplique cada parte da sua infraestrutura separadamente, utilize um arquivo .tf separado para cada recurso.
 
 Aproveite parar fazer seus testes, todo novo atributo que for criado, faça sempre o `terraform plan` e `terraform validate` e o `terraform apply` para verificar a saída no output.
 
@@ -103,18 +105,20 @@ Caso houver qualquer erro, leia atentamente o terminal.
 
 1. Inicialize o Provider
 
-2. Crie uma rede
+2. Crie uma rede.
 
 3. Crie um disco de persistente de 30GB, do tipo balanceado
 
-4. Crie uma regra de firewall liberando, ICMP e a porta 22 para 0.0.0.0/0
+4. Crie uma regra de firewall liberando, ICMP e a porta 80 para 0.0.0.0/0, na rede default
 
-5. Crie uma máquina virtual, na rede criada no passo 2.
+5. Crie uma máquina virtual, na rede default, com um ip público efêmero.
 
 6. Teste o acesso SSH na máquina via console da GCP.
 
-7. Confirme que o disco foi montado com sucesso com o comando lsscsi
+7. Instale o serviço de nginx no servidor: sudo apt-get install nginx -y
+
+8. Teste o acesso ao serviço do nginx acessando o ip público do seu ambiente.
 
 `
-Obs: lembre-se de ao final destruir sua infraestrutura  por questões de billing e manutenção sadia da sua free tier.
+Obs: lembre-se de ao final destruir sua infraestrutura por questões de billing e manutenção sadia da sua free tier.
 `
