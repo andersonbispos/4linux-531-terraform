@@ -194,23 +194,27 @@ Caso haja qualquer erro, leia atentamente o terminal.
 
 6. Valide na console da GCP a criação dos itens até aqui.
 
-7. Pela console acesse o SSH da instancia criada.
+7. Faça uma verificação mais detalhada da instância criada, confirme que foi criada na rede vpc-lab02 e não na rede default. Copie o ip publico da instância
 
-8. Instale o serviço de nginx no servidor: 
+8. Valide a aplicação da regra referente a liberação ICMP realizando o um ping para o ip publico da instância partindo da sua máquina local.
+
+9. Pela console acesse o SSH da instancia criada.
+
+10. Instale o serviço de nginx no servidor: 
 
 ```sh
 sudo apt-get install nginx -y
 ```
 
-8. Teste o acesso ao serviço do nginx acessando o ip público da intância.
+11. Teste o acesso ao serviço do nginx acessando o ip público da intância.
 
-9. Altere as definições do firewall, a porta 80 para 0.0.0.0/0, na rede vpc-lab02
+12. Altere as definições do firewall, a porta 80 para 0.0.0.0/0, na rede vpc-lab02
 
-10. Teste novamente o acesso ao serviço do nginx acessando o ip público do seu ambiente.
+13. Teste novamente o acesso ao serviço do nginx acessando o ip público do seu ambiente.
 
-11. Destrua gradativamente a sua infra-estrutura utilizando o parâmetro "-target" para evitar problemas de dependências.
+14. Destrua gradativamente a sua infra-estrutura utilizando o parâmetro "-target" para evitar problemas de dependências.
 
-12. Valide na console que todos os recursos foram destruídos com sucesso.
+15. Valide na console que todos os recursos foram destruídos com sucesso.
 
 `
 Obs: lembre-se de ao final destruir sua infraestrutura por questões de billing e manutenção sadia da sua free tier.
