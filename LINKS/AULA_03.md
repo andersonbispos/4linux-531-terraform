@@ -37,7 +37,7 @@ EOF
 ```go
 provider "google" {
   project     = "project-id"
-  credentials = file("/path/para/arquivo.json")
+  credentials = file("c:/path/para/arquivo.json")
 }
 ```
 ---
