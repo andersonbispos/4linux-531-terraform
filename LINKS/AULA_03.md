@@ -109,15 +109,19 @@ Caso haja qualquer erro, leia atentamente o terminal.
 
 3. Crie um disco de persistente de 30GB, do tipo balanceado
 
-4. Crie uma regra de firewall liberando, ICMP e a porta 80 para 0.0.0.0/0, na rede default
+4. Valide na console da GCP a criação dos itens até aqui.
 
-5. Crie uma máquina virtual, na rede default, com um ip público efêmero.
+5. Crie uma instância, na rede default, com um ip público efêmero.
 
 6. Teste o acesso SSH na máquina via console da GCP.
 
 7. Instale o serviço de nginx no servidor: sudo apt-get install nginx -y
 
-8. Teste o acesso ao serviço do nginx acessando o ip público do seu ambiente.
+8. Teste o acesso ao serviço do nginx acessando o ip público da intância.
+
+9. Crie uma regra de firewall liberando, a porta 80 para 0.0.0.0/0, na rede default
+
+10. Teste novamente o acesso ao serviço do nginx acessando o ip público do seu ambiente.
 
 `
 Obs: lembre-se de ao final destruir sua infraestrutura por questões de billing e manutenção sadia da sua free tier.
