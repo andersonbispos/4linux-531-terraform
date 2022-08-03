@@ -105,7 +105,7 @@ Caso houver qualquer erro, leia atentamente o terminal.
 
 1. Inicialize o Provider
 
-2. Crie uma rede.
+2. Crie uma rede gerenciada.
 
 3. Crie um disco de persistente de 30GB, do tipo balanceado
 
