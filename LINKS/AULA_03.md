@@ -118,6 +118,7 @@ terraform plan -target=google_compute_network.vpc_network
 #### DOC DE REFERÊNCIA GCP
 
 1. [Disk Types](https://cloud.google.com/compute/docs/disks#disk-types "Disk Types")
+2. [Google Compute Network](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_network "Google Compute Network")
 
 ---
 
