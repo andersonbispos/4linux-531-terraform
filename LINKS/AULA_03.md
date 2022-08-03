@@ -115,7 +115,11 @@ Caso haja qualquer erro, leia atentamente o terminal.
 
 6. Teste o acesso SSH na máquina via console da GCP.
 
-7. Instale o serviço de nginx no servidor: sudo apt-get install nginx -y
+7. Instale o serviço de nginx no servidor: 
+
+```sh
+sudo apt-get install nginx -y
+```
 
 8. Teste o acesso ao serviço do nginx acessando o ip público da intância.
 
