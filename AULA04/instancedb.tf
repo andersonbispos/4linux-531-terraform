@@ -1,5 +1,5 @@
-resource "google_compute_instance" "vm_tf_caixa" {
-  name         = "vm-caixa1"
+resource "google_compute_instance" "instancedb" {
+  name         = "instancedb"
   machine_type = "e2-micro"
   zone         = "us-central1-a"
 
@@ -10,11 +10,14 @@ resource "google_compute_instance" "vm_tf_caixa" {
   }
 
   network_interface {
-    network = google_compute_network.vpc-tf-caixa.self_link
     subnetwork = google_compute_subnetwork.subnet-tf-caixa-central1.self_link
 
     access_config {
       // Ephemeral public IP
     }
+  }
+
+  attached_disk {
+    source = google_compute_disk.default.self_link
   }
 }
