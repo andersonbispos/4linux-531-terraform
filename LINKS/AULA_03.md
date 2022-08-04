@@ -140,6 +140,7 @@ Obs: lembre-se de ao final destruir sua infraestrutura por questões de billing 
 
 ---
 
+
 #### ALTERANDO GRADATIVAMENTE SUA INFRAESTRUTURA
 
 Como temos mais de 1 arquivo, o Terraform irá ler todos os arquivos .tf e irá executar cada um deles, mas não queremos isso neste momento, queremos criar recursos de forma um pouco mais controlada. 
@@ -169,6 +170,8 @@ terraform plan -target=google_compute_network.vpc_network
 ```
 
 ---
+
+#### Practice Labs - Lab 02: 
 
 Alterando gradativamente a sua infraestrutura
 
