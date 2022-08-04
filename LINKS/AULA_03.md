@@ -137,3 +137,79 @@ sudo apt-get install nginx -y
 `
 Obs: lembre-se de ao final destruir sua infraestrutura por questões de billing e manutenção sadia da sua free tier.
 `
+
+---
+
+#### ALTERANDO GRADATIVAMENTE SUA INFRAESTRUTURA
+
+Como temos mais de 1 arquivo, o Terraform irá ler todos os arquivos .tf e irá executar cada um deles, mas não queremos isso neste momento, queremos criar recursos de forma um pouco mais controlada. 
+Um dos sub-comandos para o comando `terraform plan/apply/destroy` e o `-target`. 
+
+O comando tem a seguinte sintaxe:
+
+```sh
+terraform <ação> -target=recurso.nome_do_recurso
+```
+
+Exemplo:
+
+1. plan
+```sh
+terraform plan -target=google_compute_network.vpc_network
+```
+
+2. apply
+```sh
+terraform apply -target=google_compute_network.vpc_network
+```
+
+3. destroy
+```sh
+terraform plan -target=google_compute_network.vpc_network
+```
+
+---
+
+Alterando gradativamente a sua infraestrutura
+
+Instruções:
+
+Repita a criação do ambiente anterior usando a opção `-target` para evitar erros no momento da criação e destruição dos recursos.
+
+Utilize a mesma pasta do exercício anterior onde todos os arquivos já estão criados mas execute o plan, o apply e o destroy para cada recurso separadamente.
+
+Aproveite parar fazer seus testes, todo novo atributo que for criado, faça sempre o `terraform validate`, `terraform plan` para verificar a saída no output e só depois o `terraform apply` 
+
+Caso haja qualquer erro, leia atentamente o terminal.
+
+1. Crie um novo arquivo de de provdier e inicialize o Provider
+
+2. Crie uma rede gerenciada.
+
+3. Crie um disco de persistente de 30GB, do tipo balanceado
+
+4. Valide na console da GCP a criação dos itens até aqui.
+
+5. Crie uma instância, na rede default, com um ip público efêmero.
+
+6. Teste o acesso SSH na máquina via console da GCP.
+
+7. Instale o serviço de nginx no servidor: 
+
+```sh
+sudo apt-get install nginx -y
+```
+
+8. Teste o acesso ao serviço do nginx acessando o ip público da intância.
+
+9. Crie uma regra de firewall liberando, a porta 80 para 0.0.0.0/0, na rede default
+
+10. Teste novamente o acesso ao serviço do nginx acessando o ip público do seu ambiente.
+
+11. Destrua os recursos criados.
+
+12. Valide na console que todos os recursos foram destruídos com sucesso.
+
+`
+Obs: lembre-se de ao final destruir sua infraestrutura por questões de billing e manutenção sadia da sua free tier.
+`
