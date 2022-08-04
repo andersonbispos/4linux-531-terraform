@@ -26,54 +26,6 @@ terraform apply -target=google_compute_network.vpc_network
 terraform plan -target=google_compute_network.vpc_network
 ```
 
----
-
-#### Practice Labs - Lab 02: 
-
-Alterando gradativamente a sua infraestrutura
-
-Instruções:
-
-Repita a criação do ambiente anterior usando a opção `-target` para evitar erros no momento da criação e destruição dos recursos.
-
-Utilize a mesma pasta do exercício anterior onde todos os arquivos já estão criados mas execute o plan, o apply e o destroy para cada recurso separadamente.
-
-Aproveite parar fazer seus testes, todo novo atributo que for criado, faça sempre o `terraform validate`, `terraform plan` para verificar a saída no output e só depois o `terraform apply` 
-
-Caso haja qualquer erro, leia atentamente o terminal.
-
-1. Crie um novo arquivo de de provdier e inicialize o Provider
-
-2. Crie uma rede gerenciada.
-
-3. Crie um disco de persistente de 30GB, do tipo balanceado
-
-4. Valide na console da GCP a criação dos itens até aqui.
-
-5. Crie uma instância, na rede default, com um ip público efêmero.
-
-6. Teste o acesso SSH na máquina via console da GCP.
-
-7. Instale o serviço de nginx no servidor: 
-
-```sh
-sudo apt-get install nginx -y
-```
-
-8. Teste o acesso ao serviço do nginx acessando o ip público da intância.
-
-9. Crie uma regra de firewall liberando, a porta 80 para 0.0.0.0/0, na rede default
-
-10. Teste novamente o acesso ao serviço do nginx acessando o ip público do seu ambiente.
-
-11. Destrua os recursos criados.
-
-12. Valide na console que todos os recursos foram destruídos com sucesso.
-
-`
-Obs: lembre-se de ao final destruir sua infraestrutura por questões de billing e manutenção sadia da sua free tier.
-`
-
 #### DOC DE REFERÊNCIA TERRAFORM
 
 1. [HCL Reference Configuration](https://www.terraform.io/docs/language/syntax/configuration.html "HCL Reference Configuration")
@@ -81,7 +33,7 @@ Obs: lembre-se de ao final destruir sua infraestrutura por questões de billing 
 3. [Compute Instance - Attached Disk](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance#nested_attached_disk "Attached Disk")
 
 ---
-#### Practice Labs - Lab 03: 
+#### Practice Labs - Lab 02: 
 
 Trabalhando com dependências
 
