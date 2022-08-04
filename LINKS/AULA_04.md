@@ -49,9 +49,13 @@ Caso haja qualquer erro, leia atentamente o terminal.
 
 1. Inicialize o Provider.
 
+#### Preparando a Rede
+
 2. Crie o código de uma vpc não gerenciada, com o nome tf-vpc-lab, rode apenas o validate e o plan, não aplique a infraestrutura ainda.
-x
-3. Crie o código de uma subnet na faixa 192.168.10.0/24 vinculada a vpc, usando uma dependencia implicida, a vpc: tf-vpc-lab. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
+
+3. Crie o código de uma subnet1 com faixa 192.168.10.0/24, na região us-east1 vinculada a vpc: tf-vpc-lab. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
+
+4. Crie o código de uma subnet1 com faixa 192.168.10.0/24, na região us-east1 vinculada a vpc: tf-vpc-lab. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
 
 4. Crie uma regra de firewall com o nome 'allow-ssh' liberando a porta 22 para 0.0.0.0/0, na rede tf-vpc-lab, **essa regra deve ser criada desabilitada.** Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
 
