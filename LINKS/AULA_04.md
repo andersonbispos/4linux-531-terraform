@@ -49,7 +49,7 @@ Caso haja qualquer erro, leia atentamente o terminal.
 
 1. Inicialize o Provider.
 
-#### Preparando a Rede
+##### Preparando a Rede
 
 2. Crie o código de uma vpc não gerenciada, com o nome tf-vpc-lab, rode apenas o validate e o plan, não aplique a infraestrutura ainda.
 
