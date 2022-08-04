@@ -124,7 +124,7 @@ Caso haja qualquer erro, leia atentamente o terminal.
 
 11. Altere o código da regra 'allow-ssh' para habilitar o acesso à instância.
 
-12. Acesse o SSH da instância via console e valide que existem dois discos adicionados. Dica: use o comando lsscsi.
+12. Acesse o SSH da instância via console e valide que existem dois discos adicionados. Dica: use o comando `lsblk`.
 
 13. Destrua todo o ambiente e valide que todos os elementos foram removidos via validação do state e também via console.
 
