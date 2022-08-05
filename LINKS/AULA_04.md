@@ -71,9 +71,9 @@ Caso haja qualquer erro, leia atentamente o terminal.
 
 **- Na segunda parte do LAB** será criado um disco pra dados que vai ser apresentando a instancia de db e duas instâncias de webserver que devem ter uma referência explicita ao servidor dbserver1.
 
-9. Crie o código de um disco de 50 gigas, do tipo **pd-ssd** com nome: dados, na zona **us-east1-c**. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
+9. Crie o código de um disco de 50 gigas, do tipo **pd-ssd** com nome: **dados**, na zona **us-east1-c**. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
 
-10. Crie o código de uma nova instância, com o nome dbserver1, na subnet2, com um **ip público efêmero** e com o **disco `dados` atachado a ela**. Use a image: `debian-cloud/debian-11`. Rode apenas o validate e o plan, não aplique a infraestrutura ainda. **Dica: a instância deve ser criada na mesma zona que o seu disco de dados**.
+10. Crie o código de uma nova instância, com o nome dbserver1, na subnet1, com um **ip público efêmero** e com o **disco `dados` atachado a ela**. Use a image: `debian-cloud/debian-11`. Rode apenas o validate e o plan, não aplique a infraestrutura ainda. **Dica: a instância deve ser criada na mesma zona que o seu disco de dados**.
 
 `
 Para as instâncias de webserver abaixo, inclua uma referência explicita de modo que elas só sejam criadas após a criação da instância dbserver1
@@ -89,13 +89,21 @@ sudo apt update; sudo apt-get install nginx -y
 
 13. Valide via `terraform state` e também via console que o ambiente foi criado corretamente.
 
-14. Altere o código da regra 'allow-ssh' para habilitar o acesso às instâncias.
+14. Tente acessar o SSH da instância dbserver1.
 
-15. Acesse o SSH da instância dbsever1 via console e valide quantos discos existem. Dica: use o comando `lsblk`.
+15. Altere o código da regra 'allow-ssh' para habilitar o acesso às instâncias.
 
-16. Acesse o SSH da instância
+16. Acesse o SSH da instância dbsever1 via console e valide quantos discos existem. Dica: use o comando `lsblk`.
 
-17. Destrua todo o ambiente e valide que todos os elementos foram removidos via validação do state e também via console.
+17. Acesse o SSH da instância web1 via console, rode o comando `lsblk` e compare a saída com a do dbserver1.
+
+18. Em um browser acesse os ips públicos dos servidores web1 e web2 para garantir que o nginx foi instalado.
+
+19. Destrua todo o ambiente e valide que todos os elementos foram removidos via validação do state e também via console.
+
+##### Criando o ambiente completo, com um só comando.
+
+20. Execute novamente o comando apply para recriar todo o ambiente e teste novamente os acessos ao nginx.
 
 `
 Obs: lembre-se de ao final destruir sua infraestrutura por questões de billing e manutenção sadia da sua free tier.
