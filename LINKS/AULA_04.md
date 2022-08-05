@@ -71,9 +71,9 @@ Caso haja qualquer erro, leia atentamente o terminal.
 
 **- Na segunda parte do LAB** será criado um disco pra dados que vai ser apresentando a instancia de db e duas instâncias de webserver que devem ter uma referência explicita ao servidor dbserver1.
 
-9. Crie o código de um disco de 50 gigas, do tipo pd-ssd com nome: dados, na zona **us-east1-c**. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
+9. Crie o código de um disco de 50 gigas, do tipo **pd-ssd** com nome: dados, na zona **us-east1-c**. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
 
-10. Crie o código de uma nova instância, com o nome dbserver1, na subnet2, com um **ip público efêmero** e com o **disco `dados` atachado a ela**. Rode apenas o validate e o plan, não aplique a infraestrutura ainda. **Dica: a instância deve ser criada na mesma zona que o seu disco de dados**.
+10. Crie o código de uma nova instância, com o nome dbserver1, na subnet2, com um **ip público efêmero** e com o **disco `dados` atachado a ela**. Use a image: `debian-cloud/debian-11`. Rode apenas o validate e o plan, não aplique a infraestrutura ainda. **Dica: a instância deve ser criada na mesma zona que o seu disco de dados**.
 
 `
 Para as instâncias de webserver abaixo, inclua uma referência explicita de modo que elas só sejam criadas após a criação da instância dbserver1
