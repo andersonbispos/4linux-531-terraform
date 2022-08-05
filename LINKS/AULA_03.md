@@ -106,11 +106,11 @@ Aproveite parar fazer seus testes, todo novo atributo que for criado, faça semp
 
 Caso haja qualquer erro, leia atentamente o terminal.
 
-1. Crie um novo arquivo de de provdier e inicialize o Provider
+1. Crie um novo arquivo de de provider e inicialize o Provider
 
-2. Crie uma rede gerenciada.
+2. Crie uma nova rede rede gerenciada.
 
-3. Crie um disco de persistente de 30GB, do tipo balanceado
+3. Crie um disco de persistente de 30GB, do tipo balanceado.
 
 4. Valide na console da GCP a criação dos itens até aqui.
 
