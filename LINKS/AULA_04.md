@@ -89,7 +89,7 @@ sudo apt update; sudo apt-get install nginx -y
 
 13. Valide via `terraform state` e também via console que o ambiente foi criado corretamente.
 
-14. Altere o código da regra 'allow-ssh' para habilitar o acesso à instância.
+14. Altere o código da regra 'allow-ssh' para habilitar o acesso às instâncias.
 
 15. Acesse o SSH da instância dbsever1 via console e valide quantos discos existem. Dica: use o comando `lsblk`.
 
