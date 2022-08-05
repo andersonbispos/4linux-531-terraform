@@ -51,7 +51,7 @@ Caso haja qualquer erro, leia atentamente o terminal.
 
 ##### Preparando a Rede
 
-**- Na primeira parte do LAB ser criada uma rede não gerenciada, duas subnets e duas regras de firewall, a regra do SSH deve ser desabilitada por padrão.**
+**- Na primeira parte do LAB será criada uma rede não gerenciada, duas subnets e duas regras de firewall, a regra do SSH deve ser desabilitada por padrão.**
 
 2. Crie o código de uma vpc não gerenciada, com o nome tf-vpc-lab, rode apenas o validate e o plan, não aplique a infraestrutura ainda.
 
