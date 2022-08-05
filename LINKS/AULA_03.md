@@ -137,3 +137,4 @@ sudo apt-get install nginx -y
 `
 Obs: lembre-se de ao final destruir sua infraestrutura por questões de billing e manutenção sadia da sua free tier.
 `
+
