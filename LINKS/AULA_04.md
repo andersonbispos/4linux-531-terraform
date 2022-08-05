@@ -51,7 +51,7 @@ Caso haja qualquer erro, leia atentamente o terminal.
 
 ##### Preparando a Rede
 
-- Deve ser criada uma rede não gerenciada, duas subnets e duas regras de firewall, a regra do SSH deve ser desabilitada por padrão.
+**- Na primeira parte do LAB ser criada uma rede não gerenciada, duas subnets e duas regras de firewall, a regra do SSH deve ser desabilitada por padrão.**
 
 2. Crie o código de uma vpc não gerenciada, com o nome tf-vpc-lab, rode apenas o validate e o plan, não aplique a infraestrutura ainda.
 
@@ -69,15 +69,19 @@ Caso haja qualquer erro, leia atentamente o terminal.
 
 ##### Criando o ambiente de processamento a Rede
 
-- Deve ser criado um disco pra dados que vai ser apresentando a instancia de db e dois discos de arquivos que devem ser apresentados as instâncias de webserver.
+- Deve ser criado um disco pra dados que vai ser apresentando a instancia de db e dois discos de arquivos que devem ser apresentados as instâncias de webserver. Crie o arquivo de todos os recursos usando referências implicitas e explictas e execute o código apenas no final.
 
 6. Crie o código de um disco de 50 gigas, do tipo pd-balanced com nome: dados. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
 
 6. Crie o código de dois discos de 50 gigas, do tipo pd-balanced com nome: website1 e website2. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
 
-7. Crie o código de uma nova instância, com o nome dbserver1, na subnet2, com um **ip público efêmero** e com o **disco `dados` atachado a ela. **Faça com que o nginx seja instalado no momento em que o servidor é instanciado sem a necessiade de logar no servidor para realizar a instalação.** Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
+7. Crie o código de uma nova instância, com o nome dbserver1, na subnet2, com um **ip público efêmero** e com o **disco `dados` atachado a ela.
 
-7. Crie o código de uma nova instância, com o nome dbserver1, na subnet2, com um **ip público efêmero** e com o **disco `dados` atachado a ela. **Faça com que o nginx seja instalado no momento em que o servidor é instanciado sem a necessiade de logar no servidor para realizar a instalação.**
+7. Crie o código de duas novas instâncias, com o nomes web1 e web2, nas subnets 1 e 2 respectivamente, com **ip público efêmero**. **Faça com que o nginx seja instalado no momento em que o servidor é instanciado sem a necessiade de logar no servidor para realizar a instalação.** (Dica: verifique na documentação do recurso google_compute_engine pelo parâmetro metadata_startup_script)
+
+```sh Comando instalação Nginx:
+sudo apt update; sudo apt-get install nginx -y
+```
 
 8. Aplique a configuração criada até aquie, observe se os elementos foram criados na ordem correta obedecendo as dependências definidas.
 
