@@ -51,21 +51,35 @@ Caso haja qualquer erro, leia atentamente o terminal.
 
 ##### Preparando a Rede
 
+- Deve ser criada uma rede não gerenciada, duas subnets e duas regras de firewall, a regra do SSH deve ser desabilitada por padrão.
+
 2. Crie o código de uma vpc não gerenciada, com o nome tf-vpc-lab, rode apenas o validate e o plan, não aplique a infraestrutura ainda.
 
 3. Crie o código de uma subnet1 com faixa 192.168.10.0/24, na região us-east1 vinculada a vpc: tf-vpc-lab. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
 
-4. Crie o código de uma subnet1 com faixa 192.168.10.0/24, na região us-east1 vinculada a vpc: tf-vpc-lab. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
+4. Crie o código de uma subnet2 com faixa 192.168.20.0/24, na região southamerica-east1 vinculada a vpc: tf-vpc-lab. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
 
-4. Crie uma regra de firewall com o nome 'allow-ssh' liberando a porta 22 para 0.0.0.0/0, na rede tf-vpc-lab, **essa regra deve ser criada desabilitada.** Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
+4. Crie uma regra de firewall com o nome 'allow-ssh' liberando a porta 22 para 0.0.0.0/0, na rede tf-vpc-lab, **ESSA REGRA DEVE SER CRIADA DESABILITADA.**. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
 
 5. Crie uma regra de firewall com o nome 'allow-default-ports' liberando o protocolo icmp e a porta 80 para 0.0.0.0/0, na rede tf-vpc-lab. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
 
-6. Crie o código de um disco de 30 gigas, do tipo pd-balanced com nome: website. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
+8. Aplique a configuração criada até aquie, observe se os elementos foram criados na ordem correta obedecendo as dependências definidas.
 
-7. Crie o código de uma nova instância, que use a rede vpc-lab02, com um **ip público efêmero** e com o **disco de dados atachado a ela. **Faça com que o nginx seja instalado no momento em que o servidor é instanciado sem a necessiade de logar no servidor para realizar a instalação.**
+9. Valide via `terraform state list` e também via console que o ambiente foi criado corretamente.
 
-8. Aplique a configuração, observe se os elementos foram criados na ordem correta obedecendo as dependências definidas.
+##### Criando o ambiente de processamento a Rede
+
+- Deve ser criado um disco pra dados que vai ser apresentando a instancia de db e dois discos de arquivos que devem ser apresentados as instâncias de webserver.
+
+6. Crie o código de um disco de 50 gigas, do tipo pd-balanced com nome: dados. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
+
+6. Crie o código de dois discos de 50 gigas, do tipo pd-balanced com nome: website1 e website2. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
+
+7. Crie o código de uma nova instância, com o nome dbserver1, na subnet2, com um **ip público efêmero** e com o **disco `dados` atachado a ela. **Faça com que o nginx seja instalado no momento em que o servidor é instanciado sem a necessiade de logar no servidor para realizar a instalação.** Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
+
+7. Crie o código de uma nova instância, com o nome dbserver1, na subnet2, com um **ip público efêmero** e com o **disco `dados` atachado a ela. **Faça com que o nginx seja instalado no momento em que o servidor é instanciado sem a necessiade de logar no servidor para realizar a instalação.**
+
+8. Aplique a configuração criada até aquie, observe se os elementos foram criados na ordem correta obedecendo as dependências definidas.
 
 9. Valide via `terraform state` e também via console que o ambiente foi criado corretamente.
 
