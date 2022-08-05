@@ -55,9 +55,9 @@ Caso haja qualquer erro, leia atentamente o terminal.
 
 2. Crie o código de uma vpc não gerenciada, com o nome tf-vpc-lab, rode apenas o validate e o plan, não aplique a infraestrutura ainda.
 
-3. Crie o código de uma subnet1 com faixa 192.168.10.0/24, na região us-east1 vinculada a vpc: tf-vpc-lab. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
+3. Crie o código de uma subnet1 com faixa **192.168.10.0/24**, na região **us-east1** vinculada a vpc: tf-vpc-lab. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
 
-4. Crie o código de uma subnet2 com faixa 192.168.20.0/24, na região southamerica-east1 vinculada a vpc: tf-vpc-lab. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
+4. Crie o código de uma subnet2 com faixa **192.168.20.0/24**, na região **southamerica-east1** vinculada a vpc: tf-vpc-lab. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
 
 5. Crie uma regra de firewall com o nome 'allow-ssh' liberando a porta 22 para 0.0.0.0/0, na rede tf-vpc-lab, **ESSA REGRA DEVE SER CRIADA DESABILITADA.**. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
 
@@ -71,7 +71,7 @@ Caso haja qualquer erro, leia atentamente o terminal.
 
 **- Na segunda parte do LAB** será criado um disco pra dados que vai ser apresentando a instancia de db e duas instâncias de webserver que devem ter uma referência explicita ao servidor dbserver1.
 
-9. Crie o código de um disco de 50 gigas, do tipo pd-ssd com nome: dados, na zona **us-central1-c**. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
+9. Crie o código de um disco de 50 gigas, do tipo pd-ssd com nome: dados, na zona **us-east1-c**. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
 
 10. Crie o código de uma nova instância, com o nome dbserver1, na subnet2, com um **ip público efêmero** e com o **disco `dados` atachado a ela**. Rode apenas o validate e o plan, não aplique a infraestrutura ainda. **Dica: a instância deve ser criada na mesma zona que o seu disco de dados**.
 
