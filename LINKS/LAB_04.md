@@ -11,7 +11,7 @@ Para cada laboratório, crie um novo diretório. Caso haja qualquer erro, leia a
 
 Durante esse laboratório vamos alterar a infra criada no LAB 02, transformando todos os parâmetros possíveis em `variables` e `locals`.
 
-Além disso será criado uma configuração de output para exibir algumas informações das instâncias criadas. (hostname, zona, nat_ip, network_ip) 
+Além disso será criado uma configuração de output para exibir algumas informações das instâncias criadas. 
 
 ##### Preparando a Rede
 
@@ -21,61 +21,54 @@ Além disso será criado uma configuração de output para exibir algumas inform
 
 ##### Alterando a configuração da rede.
 
-Habilitar firewall ssh via metadado. Somente a instância de banco deve ter ssh liberado
+**- Na primeira parte** serão alterados as configurações do ambiente de network, para o uso de variáveis e locals. Todas as demais definições de referenciamento, zonas e ips devem permanecer as mesmas do LAB02, apenas substituir nos códigos dos recursos os valores literais por variáveis.
 
-**- Na primeira parte** do LAB criada uma rede não gerenciada, duas subnets e duas regras de firewall, **a regra do SSH deve ser desabilitada por padrão e também**.
+3. Crie 1 variável booleana com o nome `vpc_gerenciada` **sem valor padrão**. Altere o arquivo network.tf para passar a variável como valor para o parâmetro `auto_create_subnetworks`. (Dica: lembre-se de passar o valor false no momento da execução, já que estamos criando uma rede não gerenciada, caso contrário o código de criação das subnets vai falhar.)
 
-3. Crie 1 variável booleana com o nome vpc_gerenciada sem valor padrão. Altere o arquivo network subnete-eua para definir que será usada para definir 
+4. Crie 1 variável para armazenar o nome a ser usado na VPC, faça a alteração correspondente no arquivo network.tf.
 
-3. Crie 1 variável booleana com o nome subnete-eua para definir que será usada para definir 
+5. Crie variáveis para armazenar os valores `name` e `region` para as subnet1 e subnet2, faça a alteração no arquivo correspondente para passar a usar as variáveis (defina os valores a serem utilizados como default ou passe os valores em um arquivos terraform.tfvars)
 
-2. Crie o código de uma vpc não gerenciada, com o nome tf-vpc-lab, rode apenas o validate e o plan, não aplique a infraestrutura ainda.
+6. Altere a regra de firewall com o nome 'allow-ssh':
 
-3. Crie o código de uma subnet1 com faixa **192.168.10.0/24**, na região **us-east1** vinculada a vpc: tf-vpc-lab. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
+- A regra do SSH deve passar a ser **habilitada por padrão**.
 
-4. Crie o código de uma subnet2 com faixa **192.168.20.0/24**, na região **southamerica-east1** vinculada a vpc: tf-vpc-lab. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
+- Mantenha o `source_range` já especificado e adicione o parâmetro **target_tags** com uma tag: `allow-ssh` (Dica1: consulte o a documentação google_compute_firewall para um exemplo de sintaxe do target_tags).
 
-5. Crie uma regra de firewall com o nome 'allow-ssh' liberando a porta 22 para 0.0.0.0/0, na rede tf-vpc-lab, **ESSA REGRA DEVE SER CRIADA DESABILITADA.**. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
-
-6. Crie uma regra de firewall com o nome 'allow-default-ports' liberando o protocolo icmp e a porta 80 para 0.0.0.0/0, na rede tf-vpc-lab. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
-
-7. Aplique a configuração criada até aquie, observe se os elementos foram criados na ordem correta obedecendo as dependências definidas.
+7. **Valide**, **Planeje** e **Aplique** as configuração alteradas até aqui, observe se os elementos foram criados na ordem correta obedecendo as dependências definidas.
 
 8. Valide via `terraform state list` e também via console que o ambiente foi criado corretamente.
 
 ##### Alterando o ambiente de processamento para uso de variáveis
 
-- **Na segunda parte do LAB** serão alterados as configurações do ambiente de processamento, para o uso de variáveis e locals:
-    - Crie um novo arquivo locals e defina um novo `local` com o nome **db_zone**, para definir qual zona deve ser utilizada para criar o disco e também o servidor de banco.
-    - Crie variáveis para substituir os valores `name`, `machine_type` e `image` para a instância **dbserver1** (defina os valores a serem utilizados como default ou passe os valores em um arquivos terraform.tfvars)
+- **Na segunda parte do LAB** serão alterados as configurações do ambiente de processamento, para o uso de variáveis e locals. Todas as demais definições de referenciamento, zonas e ips devem permanecer as mesmas do LAB02, apenas substituir nos códigos dos recursos os valores literais por variáveis.
 
-. Crie um arquivo locals.tf e defina um valor `local` com o nome  Altere os parâmetros que definem a zona do disco **dados** e do servidor **dbserver1** para utilizar o local.
+9.  Crie um novo arquivo locals e defina um novo `local` com o nome **db_zone**, para definir qual zona (us-east1-c) deve ser utilizada para criar o disco e também o servidor de banco.
 
-9. Crie o código de um disco de 50 gigas, do tipo **pd-ssd** com nome: **dados**, na zona **us-east1-c**. Rode apenas o validate e o plan, não aplique a infraestrutura ainda.
+10.  **Instância dbserver1**: Crie variáveis para armazenar os valores `name`, `machine_type` e `image` para a instância **dbserver1**. Faça a alteração no arquivo correspondente para passar a usar as variáveis. (Defina os valores a serem utilizados como default ou passe os valores em um arquivos terraform.tfvars)
 
-10. Crie o código de uma nova instância, com o nome dbserver1, na subnet1, com um **ip público efêmero** e com o **disco `dados` atachado a ela**. Use a image: `debian-cloud/debian-11`. Rode apenas o validate e o plan, não aplique a infraestrutura ainda. **Dica: a instância deve ser criada na mesma zona que o seu disco de dados**.
+11. **Instâncias webserver1 e webserver2**: Crie variáveis para armazenar os valores de `name`, `machine_type`, `zone`, `image` e  `metadata_startup_script` para as instâncias **webserver1** e **webserver2**. Faça a alteração no(s) arquivo(s) correspondente(s) para passar a usar as variáveis. (defina os valores a serem utilizados como default ou passe os valores em um arquivos terraform.tfvars)
 
-`
-Para as instâncias de webserver abaixo, inclua uma referência explicita de modo que elas só sejam criadas após a criação da instância dbserver1
-`
+12. Altere o arquivo de definição da instância dbserver1 para adicionar a network **tag**: "allow-ssh". (Dica: verifique a documentação do google_compute_engine)
 
-11. Crie o código de duas novas instâncias, com o nomes web1 e web2, nas subnets 1 e 2 respectivamente, com **ip público efêmero**. **Faça com que o nginx seja instalado no momento em que o servidor é instanciado sem a necessiade de logar no servidor para realizar a instalação**. (Dica: verifique na documentação do recurso google_compute_engine pelo parâmetro metadata_startup_script)
+##### Criando os arquivos de output
 
-```sh Comando instalação Nginx:
-sudo apt update; sudo apt-get install nginx -y
-```
+13. Crie um novo arquivo de output que exiba na saída as seguintes informações para as 3 instâncias do ambiente:
 
-12. Aplique a configuração criada até aqui, observe se os elementos foram criados na ordem correta obedecendo as dependências definidas.
+- hostname;
+- zona;
+- nat_ip;
+- network_ip
 
-13. Valide via `terraform state` e também via console que o ambiente foi criado corretamente.
+14. **Valide**, **planeje** e **aplique** as configurações observe se os elementos foram criados na ordem correta obedecendo as dependências definidas.
 
-14. Tente acessar o SSH da instância dbserver1.
+15. Valide via `terraform state` e também via console que o ambiente foi criado corretamente.
 
-15. Altere o código da regra 'allow-ssh' para habilitar o acesso às instâncias.
+##### Validando o ambiente criado
 
-16. Acesse o SSH da instância dbsever1 via console e valide quantos discos existem. Dica: use o comando `lsblk`.
+16. Tente acessar o SSH da instância web1. (Como a tag `allow-ssh` foi aplicada apenas ao dbserver1, só será possível realizar o ssh para essa instância.
 
-17. Acesse o SSH da instância web1 via console, rode o comando `lsblk` e compare a saída com a do dbserver1.
+17. Acesse o SSH da instância dbsever1 via console e valide quantos discos existem. Dica: use o comando `lsblk`. (Dica: o disco deve ser listado como um dispositivo `/dev/sdb`)
 
 18. Em um browser acesse os ips públicos dos servidores web1 e web2 para garantir que o nginx foi instalado.
 
@@ -85,7 +78,7 @@ sudo apt update; sudo apt-get install nginx -y
 
 20. Execute novamente o comando apply para recriar todo o ambiente e teste novamente os acessos ao nginx.
 
-19. Destrua todo o ambiente e valide que todos os elementos foram removidos via validação do state e também via console.
+21. Destrua todo o ambiente e valide que todos os elementos foram removidos via validação do state e também via console.
 `
 Obs: lembre-se de ao final destruir sua infraestrutura por questões de billing e manutenção sadia da sua free tier.
 `

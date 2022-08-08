@@ -67,7 +67,7 @@ Caso haja qualquer erro, leia atentamente o terminal.
 
 8. Valide via `terraform state list` e também via console que o ambiente foi criado corretamente.
 
-##### Adicionando o ambiente de processamento a Rede
+##### Alterando o ambiente de processamento para uso de variáveis
 
 **- Na segunda parte do LAB** será criado um disco pra dados que vai ser apresentando a instancia de db e duas instâncias de webserver que devem ter uma referência explicita ao servidor dbserver1.
 
@@ -105,7 +105,7 @@ sudo apt update; sudo apt-get install nginx -y
 
 20. Execute novamente o comando apply para recriar todo o ambiente e teste novamente os acessos ao nginx.
 
-19. Destrua todo o ambiente e valide que todos os elementos foram removidos via validação do state e também via console.
+21. Destrua todo o ambiente e valide que todos os elementos foram removidos via validação do state e também via console.
 `
 Obs: lembre-se de ao final destruir sua infraestrutura por questões de billing e manutenção sadia da sua free tier.
 `
