@@ -1,15 +1,17 @@
 
-https://www.terraform.io/language/values/variables
+#### DOC DE REFERÊNCIA TERRAFORM
 
-### Trabalhando com variáveis - Lab 04: 
+1. [HCL Reference - Variables](https://www.terraform.io/language/values/variables "HCL Reference - Variables")
 
-Criando configurações iniciais
+### Practice Labs - Lab 04: 
+
+Trabalhando com variáveis
 
 Instruções:
 
 Para cada laboratório, crie um novo diretório. Caso haja qualquer erro, leia atentamente o terminal. Sempre que possível utilize referências implicitas para garantir que sua infra seja criada na ordem correta.
 
-Durante esse laboratório vamos alterar a infra criada no LAB 02, transformando todos os parâmetros possíveis em `variables` e `locals`.
+Durante esse laboratório vamos alterar a infra criada no LAB 02, transformando todos os parâmetros possíveis em `variables` e/ou `locals` quando for mais conveniente.
 
 Além disso será criado uma configuração de output para exibir algumas informações das instâncias criadas. 
 
