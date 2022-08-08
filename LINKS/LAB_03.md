@@ -1,3 +1,7 @@
+https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket
+
+https://cloud.google.com/storage/docs/locations
+
 #### Practice Labs - Lab 03: 
 
 Trabalhando com estado
@@ -44,7 +48,7 @@ O nome de um bucket precisa ser único a nível de toda a gcp, desse modo pode s
 
 14. Destrua a infraestrutura remanescente.
 
-15. Valide via console que a regra de firewall e a rede vpc-teste2 continua presentes na configuração da GCP.
+15. Valide via console que a regra de firewall e a rede vpc-teste continua presentes na configuração da GCP.
 
 16. Importe novamente a rede vpc-teste para o state e valide a importação utilizando os subcomandos `list` e `show` do state.
 
