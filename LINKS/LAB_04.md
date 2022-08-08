@@ -45,7 +45,7 @@ Habilitar firewall ssh via metadado. Somente a instância de banco deve ter ssh 
 
 ##### Alterando o ambiente de processamento para uso de variáveis
 
-**- Na segunda parte do LAB** serão alterados as configurações do ambiente de processamento, para o uso de variáveis e locals. 
+- **Na segunda parte do LAB** serão alterados as configurações do ambiente de processamento, para o uso de variáveis e locals. 
  - Crie um novo arquivo locals e defina um novo `local` com o nome **db_zone**, para definir qual zona deve ser utilizada para criar o disco e também o servidor de banco.
  - Crie variáveis para substituir os valores `name`, `machine_type` e `image` para a instância **dbserver1** (defina os valores a serem utilizados como default ou passe os valores em um arquivos terraform.tfvars)
 
