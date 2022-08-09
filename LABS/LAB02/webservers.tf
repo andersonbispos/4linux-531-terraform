@@ -1,7 +1,7 @@
-resource "google_compute_instance" "web2" {
-  name         = "web2"
+resource "google_compute_instance" "web1" {
+  name         = "web1"
   machine_type = "e2-micro"
-  zone         = "us-east1-c"
+  zone         = "southamerica-east1-c"
 
   boot_disk {
     initialize_params {
@@ -24,10 +24,10 @@ resource "google_compute_instance" "web2" {
   ]
 }
 
-resource "google_compute_instance" "web1" {
-  name         = "web1"
+resource "google_compute_instance" "web2" {
+  name         = "web2"
   machine_type = "e2-micro"
-  zone         = "southamerica-east1-c"
+  zone         = "us-east1-c"
 
   boot_disk {
     initialize_params {
