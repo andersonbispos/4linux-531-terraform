@@ -1,6 +1,6 @@
 resource "google_compute_network" "vpc-tf-caixa" {
-  name = "vpc-tf-caixa"
+  name = var.vpc_name
 
-  auto_create_subnetworks = false
+  auto_create_subnetworks = var.rede_gerenciada
 }
 

@@ -8,8 +8,8 @@ terraform {
 
   backend "gcs" {
     credentials = "/Users/anderson/Documents/gcp-svc/terraform-4linux-8209-c8557147cf33.json"
-    bucket  = "abs-terraform-treinamento"
-    prefix  = "terraform/state"
+    bucket      = "abs-terraform-treinamento"
+    prefix      = "terraform/state"
   }
 }
 

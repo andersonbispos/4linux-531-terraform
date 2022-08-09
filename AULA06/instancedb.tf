@@ -1,11 +1,13 @@
 resource "google_compute_instance" "instancedb" {
-  name         = "instancedb"
-  machine_type = "e2-micro"
-  zone         = "us-central1-a"
+  name         = local.db_vm_name
+  machine_type = var.default_machine_type
+  zone         = local.db_data_zone
+
+  tags = ["web"]
 
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-11"
+      image = var.default_image
     }
   }
 

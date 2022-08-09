@@ -1,7 +1,7 @@
 resource "google_compute_subnetwork" "subnet-tf-caixa-central1" {
-  name          = "subnet-tf-caixa-central1"
-  ip_cidr_range = "10.10.10.0/24"
-  region        = "us-central1"
+  name          = var.subnet1_name
+  ip_cidr_range = var.subnet1_cidr
+  region        = var.subnet1_region
   network       = google_compute_network.vpc-tf-caixa.self_link
 }
 
