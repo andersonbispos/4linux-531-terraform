@@ -47,35 +47,48 @@ Aproveite parar fazer seus testes, todo novo recurso que for criado, faça sempr
 
 9. Adicione a tab `webapp` a todas as instâncias para permitir a aplicação da regra de firewall.
 
-10. Criar 4 instâncias de backend:
-
-- O trecho ou arquivo de definição dos backends deve conter apenas um bloco generico sendo incrementado por um `count`.
-- Use a função `length` baseado na variável de zonas ou nomes para definir o tamanho da contagem.
-- Use variáveis do tipo lista para armazenar os nomes e as zonas onde as instâncias devem ser provisionadas:
-    - Nomes das instâncias: webback1, webback2, webback3 e webback4. 
-    - Zonas das instâncias: soutamerica-east1-a, soutamerica-east1-b, us-east1-b e us-east1-c
-- Use o script de `prov-bach.sh` para provisionar automáticamente o nginx nas instâncias de backend durante a criação.
-- Adicione o seguinte trecho a definição das instâncias de backend:
-
-``
-  metadata = {
-    VmDnsSetting = "GlobalDefault"
-  }
-``
-
 `
 Como iremos usar um load balancer no nginx os nomes dos instâncias precisam ser conhecidas previamente por isso não estamos definindo esses nomes dinâmicamente como no caso das subnets
 `
 
-11. Provisionar uma instância de frontend na zona `soutamerica-east1-a`.
-- Garanta que o frontend só apenas **após concluído provisionado depois dos backends**. (Dica: use um trecho contendo uma dependência explicita)
+10. Criar 2 instâncias de backend na região **us-east1**:
+
+- O trecho ou arquivo de definição dos backends deve conter apenas um bloco generico sendo incrementado por um `count`.
+- Use a função `length` baseado na variável de zonas ou nomes para definir o tamanho da contagem.
+- Use variáveis do tipo lista para armazenar os nomes e as zonas onde as instâncias devem ser provisionadas:
+    - Nomes das instâncias: **webback1**, **webback2**. 
+    - Zonas das instâncias: **us-east1-b** e **us-east1-c**
+- Use o script de `prov-bach.sh` para provisionar automáticamente o nginx nas instâncias de backend durante a criação.
+- Adicione o seguinte trecho a definição das instâncias de backend `metadata = { VmDnsSetting = "GlobalDefault" }`. (Este trecho vai possibilitar que as intâncias de backend sejam accessíveis pelo seus nomes independentemente da região ou da zona onde forem provisionadas)
+- Use o seguinte código para referenciar a subnet: `subnetwork = google_compute_subnetwork.modelo-subnets[0].self_link`
+
+11. Criar 2 instâncias de backend na região **soutamerica-east1**:
+
+- O trecho ou arquivo de definição dos backends deve conter apenas um bloco generico sendo incrementado por um `count`.
+- Use a função `length` baseado na variável de zonas ou nomes para definir o tamanho da contagem.
+- Use variáveis do tipo lista para armazenar os nomes e as zonas onde as instâncias devem ser provisionadas:
+    - Nomes das instâncias: **webback3** e **webback4**. 
+    - Zonas das instâncias: **soutamerica-east1-a**, **soutamerica-east1-b**
+- Use o script de `prov-back.sh` para provisionar automaticamente o nginx nas instâncias de backend durante a criação.
+- Adicione o seguinte trecho a definição das instâncias de backend `metadata = { VmDnsSetting = "GlobalDefault" }`. (Este trecho vai possibilitar que as intâncias de backend sejam accessíveis pelo seus nomes independentemente da região ou da zona onde forem provisionadas)
+- Use o seguinte código para referenciar a subnet: `subnetwork = google_compute_subnetwork.modelo-subnets[1].self_link`
+
+11. Provisionar uma instância de frontend na zona `soutamerica-east1-a`:
+
+- Garanta que o frontend seja provisionado apenas **após concluído o provisionamento dos backends**. (Dica: use um trecho contendo uma dependência explicita)
 - Use o script `prov-front.sh` para instalar o nginx e realizar a configuração do frontend.
+
+12. Adicione um output para exibir o ip público da instancia de frontend.
+
+13. Acesse o endereço do ip público da instancia de frontend e confirme que o balanceamento está funcional.
+
+14. Destrua todo o ambiente e valide que todos os elementos foram removidos via validação do state e também via console.
 
 #### Criando o ambiente completo, com um só comando.
 
-24. Execute novamente o comando apply para recriar todo o ambiente e teste novamente os acessos ao nginx.
+15. Execute novamente o comando apply para recriar todo o ambiente e teste novamente os acessos ao nginx.
 
-25. Destrua todo o ambiente e valide que todos os elementos foram removidos via validação do state e também via console.
+16. Destrua todo o ambiente e valide que todos os elementos foram removidos via validação do state e também via console.
 `
 Obs: lembre-se de ao final destruir sua infraestrutura por questões de billing e manutenção sadia da sua free tier.
 `
