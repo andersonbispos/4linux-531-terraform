@@ -16,7 +16,7 @@ Para simplificar a validação das alterações crie inicialmente apenas os arqu
 
 Aproveite parar fazer seus testes, todo novo recurso que for criado, faça sempre o `terraform validate`, `terraform plan` para verificar a saída no output.
 
-##### Preparando a Rede
+#### Preparando a Rede
 
 **- Na primeira parte** serão alterados as configurações do ambiente de network, para o uso de funções e variáveis complexas. Todas as demais definições de referenciamento, zonas e ips devem permanecer as mesmas do LAB02.
 
@@ -35,26 +35,47 @@ Aproveite parar fazer seus testes, todo novo recurso que for criado, faça sempr
 
 5. Defina um output que exiba ao final do apply o nome das subnets criadas.
 
-5. **Valide**, **Planeje** e **Aplique** as configuração alteradas até aqui, observe se os elementos foram criados na ordem correta obedecendo as dependências definidas.
+6. **Valide**, **Planeje** e **Aplique** as configuração alteradas até aqui, observe se os elementos foram criados na ordem correta obedecendo as dependências definidas.
 
-6. Valide via `terraform state list` e também via console que o ambiente foi criado corretamente.
+7. Valide via `terraform state list` e também via console que o ambiente foi criado corretamente.
 
-##### Adicionando o ambiente de processamento a Rede
+#### Adicionando o ambiente de processamento a Rede
 
 **- Na segunda parte do LAB** serão criados 4 servidores WEB de backend e também 1 servidor de frontend que será utilizado para balancear o tráfego entre os servidores backend. Utilize os scripts de provisionamentos disponibilizados para configurar os servidores de back e o de front após durante o provisionamento dos mesmos.
 
-7. Criar 4 instâncias de backend:
+8. Crie variáveis para conter as definições de `image` e `machine_type` a serem utilizadas nos códitos de definição de todas as instâncias.
+
+9. Adicione a tab `webapp` a todas as instâncias para permitir a aplicação da regra de firewall.
+
+10. Criar 4 instâncias de backend:
 
 - O trecho ou arquivo de definição dos backends deve conter apenas um bloco generico sendo incrementado por um `count`.
+- Use a função `length` baseado na variável de zonas ou nomes para definir o tamanho da contagem.
 - Use variáveis do tipo lista para armazenar os nomes e as zonas onde as instâncias devem ser provisionadas:
     - Nomes das instâncias: webback1, webback2, webback3 e webback4. 
     - Zonas das instâncias: soutamerica-east1-a, soutamerica-east1-b, us-east1-b e us-east1-c
+- Use o script de `prov-bach.sh` para provisionar automáticamente o nginx nas instâncias de backend durante a criação.
+- Adicione o seguinte trecho a definição das instâncias de backend:
+
+``
+  metadata = {
+    VmDnsSetting = "GlobalDefault"
+  }
+``
 
 `
 Como iremos usar um load balancer no nginx os nomes dos instâncias precisam ser conhecidas previamente por isso não estamos definindo esses nomes dinâmicamente como no caso das subnets
 `
 
+11. Provisionar uma instância de frontend na zona `soutamerica-east1-a`.
+- Garanta que o frontend só apenas **após concluído provisionado depois dos backends**. (Dica: use um trecho contendo uma dependência explicita)
+- Use o script `prov-front.sh` para instalar o nginx e realizar a configuração do frontend.
 
-- 
+#### Criando o ambiente completo, com um só comando.
 
-- Criar 2 instâncias de backend, 2 na região **us-east1** e 2 na região **soutamerica-east1**, com os nomes **webback1, webback2, webback3** e **webback4**, respectivamente. Provisione o **Nginx** nas 4 instâncias. (**Dica:** lembre-se que na hora de especificars as instâncias deve ser informado a zona a ser utilizada não somente a região.)
+24. Execute novamente o comando apply para recriar todo o ambiente e teste novamente os acessos ao nginx.
+
+25. Destrua todo o ambiente e valide que todos os elementos foram removidos via validação do state e também via console.
+`
+Obs: lembre-se de ao final destruir sua infraestrutura por questões de billing e manutenção sadia da sua free tier.
+`
