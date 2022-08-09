@@ -53,3 +53,7 @@ O nome de um bucket precisa ser único a nível de toda a gcp, desse modo pode s
 16. Importe novamente a rede vpc-teste para o state e valide a importação utilizando os subcomandos `list` e `show` do state.
 
 17. Destrua toda a infraestrutura, em seguinda entre na pasta state e destrua também o bucket. **OBS.: A regra de firewall que foi removido do estado  no passo 13 deve permanecer criado na rede default. Valide se a regra permanece via console.**
+
+`
+Obs: lembre-se de ao final destruir sua infraestrutura por questões de billing e manutenção sadia da sua free tier.
+`
