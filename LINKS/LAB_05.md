@@ -28,9 +28,9 @@ Aproveite parar fazer seus testes, todo novo recurso que for criado, faça sempr
 
 4. Crie 2 subredes nas regiões **us-east1** e **southamerica-east1**, com as faixas **192.168.10.0/24** e **192.168.20.0/24** respectivamente:
 
-- O arquivo de definição da subnet deve conter apenas um bloco generico sendo incrementado por um `count` ou `for_each`
+- O arquivo de definição da subnet deve conter apenas um bloco generico sendo incrementado por um `count`;
 - Utilizando a função `format` defina nome da subnet utilizando um prefixo (ex. subnet) unido ao nome da vpc (ex.: subnet-vpc-example)
-- Use variáveis do tipo list ou map para armazenar os nomes das regiões e das faixas a serem utilizadas.
+- Use variáveis do tipo list para armazenar os nomes das regiões e das faixas a serem utilizadas;
 - Caso use o count, use a função `length` baseado na variável de regiões ou faixas para definir o tamanho da contagem.
 
 5. Defina um output que exiba ao final do apply o nome das subnets criadas.
