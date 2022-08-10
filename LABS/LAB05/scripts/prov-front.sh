@@ -6,8 +6,10 @@ sudo apt-get install nginx -y
 
 sudo cat <<EOF > /etc/nginx/conf.d/lb.conf
 upstream webfront {
-server web1;
-server web2;
+server webback1;
+server webback2;
+server webback3;
+server webback4;
 }
 
 server {
