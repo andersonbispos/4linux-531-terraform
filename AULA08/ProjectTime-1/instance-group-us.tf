@@ -9,5 +9,5 @@ resource "google_compute_region_instance_group_manager" "appserver-us" {
     instance_template = google_compute_instance_template.default.self_link
   }
 
-  target_size = 0
+  target_size = 3
 }
