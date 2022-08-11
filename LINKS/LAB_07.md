@@ -20,7 +20,7 @@ Aproveite parar fazer seus testes, todo novo recurso que for criado, faça sempr
 
 3. Crie as definições de uma vpc nao gerenciada, uma subnet, uma regra de firewall e uma instancia com as devidas alterações para uso dos workspaces.
 
-`Para a workspace de prod devem ser criadas 2 para qualquer outro, deve ser criado apenas uma instância.`
+`Para a workspace de prod devem ser criadas 2 instâncias para qualquer outro, deve ser criado apenas uma instância.`
 
 4. Crie um novo workspace dev.
 
