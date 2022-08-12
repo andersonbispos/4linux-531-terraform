@@ -1,7 +1,7 @@
 #### DOC DE REFERÊNCIA
 
 1. [Criando e Usando Modulos Locais](https://learn.hashicorp.com/tutorials/terraform/module-create?in=terraform/modules "Criando e Usando Modulos Locais")
-
+2. [terraform-docs](https://terraform-docs.io/ "terraform-docs")
 ---
 
 ### Practice Labs - Lab 08
