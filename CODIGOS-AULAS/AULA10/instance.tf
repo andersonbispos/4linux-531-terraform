@@ -1,5 +1,5 @@
-resource "google_compute_instance" "vm_tf_caixa" {
-  name         = "vm-caixa1"
+resource "google_compute_instance" "vm_teste" {
+  name         = "vm1"
   machine_type = "e2-micro"
   zone         = "us-central1-a"
 
@@ -10,6 +10,6 @@ resource "google_compute_instance" "vm_tf_caixa" {
   }
 
   network_interface {
-    network = "default"
+    network = module.vpc.vpc_self_link
   }
 }
