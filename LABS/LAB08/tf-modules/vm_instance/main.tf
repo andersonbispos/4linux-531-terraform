@@ -10,13 +10,13 @@ resource "google_compute_instance" "vm" {
   }
 
   network_interface {
-    network = var.vm_network
+    network    = var.vm_network
     subnetwork = var.vm_subnet
 
-      access_config {
-        
-      }
+    access_config {
+
+    }
   }
 
-  metadata_startup_script = file(var.metadata_startup_script)
+  metadata_startup_script = var.vm_metadata_startup_script
 }
