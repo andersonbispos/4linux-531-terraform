@@ -1,4 +1,4 @@
-resource "google_compute_instance" "vm_teste" {
+resource "google_compute_instance" "vm_modelo" {
   name         = var.vm_name
   machine_type = "e2-micro"
   zone         = var.vm_zone
