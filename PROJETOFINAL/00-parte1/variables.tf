@@ -17,5 +17,5 @@ variable "instance_group_regions" {
 
 variable "instance_group_sizes" {
   type    = list(any)
-  default = [2, 2, 2]
+  default = [0, 1, 0]
 }
