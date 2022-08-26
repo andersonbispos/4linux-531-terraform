@@ -108,13 +108,13 @@ Caso haja qualquer erro, leia atentamente o terminal.
 
 1. Crie um novo arquivo de de provider e inicialize o Provider
 
-2. Crie uma nova rede rede gerenciada.
+2. Crie uma nova rede rede auto.
 
 3. Crie um disco de persistente de 30GB, do tipo balanceado.
 
 4. Valide na console da GCP a criação dos itens até aqui.
 
-5. Crie uma instância, na rede default, com um ip público efêmero.
+5. Crie uma instância, na rede *default*, com um ip público efêmero.
 
 6. Teste o acesso SSH na máquina via console da GCP.
 
